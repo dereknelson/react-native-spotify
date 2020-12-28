@@ -8,3 +8,6 @@
 [submodule "android/external/SpotifyAuthSDK"]
 	path = android/external/SpotifyAuthSDK
 	url = https://github.com/lufinkey/spotify-android-auth
+[submodule "ios/external/ios-sdk"]
+	path = ios/external/ios-sdk
+	url = https://github.com/spotify/ios-sdk
