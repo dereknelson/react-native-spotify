@@ -24,48 +24,45 @@
 	return [self RNSpotifyError:[RNSpotifyError errorWithNSError:error]];
 }
 
-+(id)SPTPlaybackState:(SPTPlaybackState*)state {
++(id)SPTAppRemotePlayerState:(id<SPTAppRemotePlayerState>)state {
 	if(state == nil) {
 		return [NSNull null];
 	}
 	return @{
-		@"playing":[NSNumber numberWithBool:state.isPlaying],
-		@"repeating":[NSNumber numberWithBool:state.isRepeating],
-		@"shuffling":[NSNumber numberWithBool:state.isShuffling],
-		@"activeDevice":[NSNumber numberWithBool:state.isActiveDevice],
-		@"position":@(state.position)
+		@"playing":[NSNumber numberWithBool:state.paused],
+//		@"repeating":[NSNumber numberWithBool:state.isRepeating],
+//		@"shuffling":[NSNumber numberWithBool:state.isShuffling],
+//		@"activeDevice":[NSNumber numberWithBool:state.isActiveDevice],
+		@"position":@(state.playbackPosition)
 	};
 }
 
-+(id)SPTPlaybackTrack:(SPTPlaybackTrack*)track {
++(id)SPTPlaybackTrack:(id<SPTAppRemoteTrack>)track {
 	if(track == nil) {
 		return [NSNull null];
 	}
 	return @{
 		@"name":[[self class] ID:track.name],
-		@"uri":[[self class] ID:track.uri],
-		@"contextName":[[self class] ID:track.playbackSourceName],
-		@"contextUri":[[self class] ID:track.playbackSourceUri],
-		@"artistName":[[self class] ID:track.artistName],
-		@"artistUri":[[self class] ID:track.artistUri],
-		@"albumName":[[self class] ID:track.albumName],
-		@"albumUri":[[self class] ID:track.albumUri],
-		@"albumCoverArtURL":[[self class] ID:track.albumCoverArtURL],
+		@"uri":[[self class] ID:track.URI],
+		@"artistName":[[self class] ID:track.artist.name],
+		@"artistUri":[[self class] ID:track.artist.URI],
+		@"albumName":[[self class] ID:track.album.name],
+		@"albumUri":[[self class] ID:track.album.URI],
+		@"albumCoverArtURL":[[self class] ID:track.album],
 		@"duration":@(track.duration),
-		@"indexInContext":@(track.indexInContext)
 	};
 }
 
-+(id)SPTPlaybackMetadata:(SPTPlaybackMetadata*)metadata {
-	if(metadata == nil) {
-		return [NSNull null];
-	}
-	return @{
-		@"prevTrack":[[self class] SPTPlaybackTrack:metadata.prevTrack],
-		@"currentTrack":[[self class] SPTPlaybackTrack:metadata.currentTrack],
-		@"nextTrack":[[self class] SPTPlaybackTrack:metadata.nextTrack]
-	};
-}
+//+(id)SPTPlaybackMetadata:(SPTPlaybackMetadata*)metadata {
+//	if(metadata == nil) {
+//		return [NSNull null];
+//	}
+//	return @{
+//		@"prevTrack":[[self class] SPTPlaybackTrack:metadata.prevTrack],
+//		@"currentTrack":[[self class] SPTPlaybackTrack:metadata.currentTrack],
+//		@"nextTrack":[[self class] SPTPlaybackTrack:metadata.nextTrack]
+//	};
+//}
 
 +(id)RNSpotifySessionData:(RNSpotifySessionData*)session {
 	if(session == nil) {
