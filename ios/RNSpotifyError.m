@@ -7,7 +7,7 @@
 //
 
 #import "RNSpotifyError.h"
-#import <SpotifyAudioPlayback/SpotifyAudioPlayback.h>
+#import <SpotifyiOS/SpotifyiOS.h>
 
 
 @interface RNSpotifyErrorCode()

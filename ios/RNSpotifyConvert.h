@@ -1,7 +1,6 @@
 
 #import <Foundation/Foundation.h>
-#import <SpotifyMetadata/SpotifyMetadata.h>
-#import <SpotifyAudioPlayback/SpotifyAudioPlayback.h>
+#import <SpotifyiOS/SpotifyiOS.h>>
 #import "RNSpotifyAuth.h"
 #import "RNSpotifyError.h"
 
